@@ -1,31 +1,31 @@
-# Basic arcade program
-# Displays a white window with a blue circle in the middle
-
 # Imports
 import arcade
+import arcade.gui
+import main_menu
 
-# Constants
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
-SCREEN_TITLE = "Welcome to Arcade"
-RADIUS = 150
 
-# Open the window
-arcade.open_window(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
+def main():
+    # Constants
+    SCREEN_WIDTH = 1280
+    SCREEN_HEIGHT = 960
+    SCREEN_BOTTOM = 0
+    SCREEN_TITLE = "The Drake's Pursuit" #Denkbare Alternative: Hunt for Cocks
+    NAME_OF_THE_GAME = "The Drake's Pursuit"
 
-# Set the background color
-arcade.set_background_color(arcade.color.WHITE)
+    arcade.open_window(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
 
-# Clear the screen and start drawing
-arcade.start_render()
+    # Set the background color
+    arcade.set_background_color(arcade.color.SKY_BLUE)
 
-# Draw a blue circle
-arcade.draw_circle_filled(
-    SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, RADIUS, arcade.color.RED
-)
+    # Clear the screen and start drawing the main screen
+    arcade.start_render()
+    main_menu.draw_backgrund(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BOTTOM)
+    main_menu.add_main_menu(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BOTTOM, NAME_OF_THE_GAME)
 
-# Finish drawing
-arcade.finish_render()
+    # Finish drawing
+    arcade.finish_render()
 
-# Display everything
-arcade.run()
+    # Display everything
+    arcade.run()
+
+main()
