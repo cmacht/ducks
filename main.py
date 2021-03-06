@@ -58,6 +58,7 @@ class Game(arcade.Window):
         self.walther = arcade.load_sound("sounds/Mein_Gott_Watlher.ogg")
         self.mossberg_happy = arcade.load_sound("sounds/Mossberg500-happy.ogg")
         self.Teckel = arcade.load_sound("sounds/Teckel.ogg")
+        self.nachladen = arcade.load_sound("sounds/Mein_Gott_Watlher.ogg")
 
 
     def on_draw(self):
@@ -90,7 +91,8 @@ class Game(arcade.Window):
         For a full list of keys, see:
         http://arcade.academy/arcade.key.html
         """
-        pass
+        if key == arcade.key.H:
+            arcade.play_sound(self.Teckel)
 
     def on_key_release(self, key, key_modifiers):
         """
