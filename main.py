@@ -48,6 +48,13 @@ class Game(arcade.Window):
         self.player_list.append(self.player_sprite)
 
 
+        #load sounds
+        self.mossberg = arcade.load_sound("sounds/Mossberg500.ogg")
+        self.walther = arcade.load_sound("sounds/Mein_Gott_Watlher.ogg")
+        self.mossberg_happy = arcade.load_sound("sounds/Mossberg500-happy.ogg")
+        self.Teckel = arcade.load_sound("sounds/Teckel.ogg")
+
+
     def on_draw(self):
         """
         Render the screen.
@@ -96,7 +103,7 @@ class Game(arcade.Window):
         """
         Called when the user presses a mouse button.
         """
-        pass
+        arcade.play_sound(self.mossberg_happy)
 
     def on_mouse_release(self, x, y, button, key_modifiers):
         """
