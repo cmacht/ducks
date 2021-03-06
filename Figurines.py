@@ -8,9 +8,10 @@ import arcade
 #    arcade.draw_scaled_texture_rectangle(540, 60, texture, scale, 45)
 
 #class ente():
-#    def create(self):
-#        self.enten_sprite1 = arcade.Sprite("sprites/Ente1/Enteganzoben.png", 0.3)
-#        self.enten_list = arcade.SpriteList()#
-#
-#    def draw(self):
-#        self.enten_list.draw(self)
+#    def __init__(self, pos_x, pos_y):
+#        super().__init__()
+#        self.fly_textures = []
+#        for i in range(8):
+#            texture = arcade.load_texture(f"sprites/Ente1/e{i}.png")
+#            self.fly_textures.append(texture)#
+#return

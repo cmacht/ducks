@@ -3,6 +3,7 @@ import main_menu
 import Figurines
 
 
+
 class Game(arcade.Window):
     """
     Main application class.
@@ -30,6 +31,7 @@ class Game(arcade.Window):
         self.SCREEN_HEIGHT = self.height
         self.SCREEN_BOTTOM = 0
         self.NAME_OF_THE_GAME = "The Drake's Pursuit"
+        self.background = None
 
         # Don't show the mouse cursor
         self.set_mouse_visible(False)
@@ -42,13 +44,19 @@ class Game(arcade.Window):
 
         # Score
 
+        #Bulletcount
+        bullets_in_magazine = 3
+        bullets_shot = 0
+        bullts_hit = 0
+        bullets_missed = 0
+
         # Set up the player
-        self.player_sprite = arcade.Sprite("sprites/Absehen.png", 0.3)
+        self.player_sprite = arcade.Sprite("images/sprites/Absehen.png", 0.3)
         self.player_list.append(self.player_sprite)
 
 
         # Set up the Duck
-        self.enten_sprite = arcade.Sprite("sprites/Ente1/Enteganzoben.png", 0.3)
+        self.enten_sprite = arcade.Sprite("images/sprites/Ente1/e0.png", 0.3)
         self.enten_sprite.center_x = 64
         self.enten_sprite.center_y = 120
         self.enten_list.append(self.enten_sprite)
@@ -60,6 +68,13 @@ class Game(arcade.Window):
         self.Teckel = arcade.load_sound("sounds/Teckel.ogg")
         self.nachladen = arcade.load_sound("sounds/Mein_Gott_Watlher.ogg")
 
+        self.music = arcade.load_sound("sounds/hintergrundgerausche.ogg")
+        arcade.play_sound(self.music, 0.5, 0.0, True)
+        self.background = arcade.load_texture("images/scenery/layer0.png")
+        self.layers = []
+        for i in range (1, 4):
+            self.layers.append(arcade.load_texture(f"images/scenery/layer{i}.png"))
+
 
     def on_draw(self):
         """
@@ -68,8 +83,15 @@ class Game(arcade.Window):
         # This command should happen before we start drawing. It will clear
         # the screen to the background color, and erase what we drew last frame.
         arcade.start_render()
-        main_menu.draw_backgrund(self.SCREEN_WIDTH, self.SCREEN_HEIGHT, self.SCREEN_BOTTOM)
-        main_menu.add_main_menu(self.SCREEN_WIDTH, self.SCREEN_HEIGHT, self.SCREEN_BOTTOM, self.NAME_OF_THE_GAME)
+        arcade.draw_texture_rectangle(
+            self.SCREEN_WIDTH / 2,
+            self.SCREEN_HEIGHT / 2,
+            self.SCREEN_WIDTH,
+            self.SCREEN_HEIGHT,
+            self.background
+        )
+        #TODO: Dashier funktioniert manchal und manchmal nicht. Was ist da los?
+        #arcade.draw_text(self.NAME_OF_THE_GAME, self.SCREEN_WIDTH/2, self.SCREEN_HEIGHT/2, arcade.color.BLACK, 14, align="center")
         self.enten_list.draw()
         self.player_list.draw()
 
@@ -129,7 +151,7 @@ class Game(arcade.Window):
 def main():
     """ Main method """
     game_title = "The Drake's Pursuit"  # Denkbare Alternative: Hunt for Cocks
-    game = Game(1280, 960, game_title)
+    game = Game(1280, 720, game_title)
     game.setup()
     arcade.run()
 
