@@ -37,16 +37,21 @@ class Game(arcade.Window):
         # Create your sprites and sprite lists here
         # Sprite lists
         self.player_list = arcade.SpriteList()
-        self.coin_list = arcade.SpriteList()
+        self.enten_list = arcade.SpriteList(use_spatial_hash=True)
+
 
         # Score
 
         # Set up the player
         self.player_sprite = arcade.Sprite("sprites/Absehen.png", 0.3)
-        self.player_sprite.center_x = 50
-        self.player_sprite.center_y = 50
         self.player_list.append(self.player_sprite)
 
+
+        # Set up the Duck
+        self.enten_sprite = arcade.Sprite("sprites/Ente1/Enteganzoben.png", 0.3)
+        self.enten_sprite.center_x = 64
+        self.enten_sprite.center_y = 120
+        self.enten_list.append(self.enten_sprite)
 
         #load sounds
         self.mossberg = arcade.load_sound("sounds/Mossberg500.ogg")
@@ -64,7 +69,7 @@ class Game(arcade.Window):
         arcade.start_render()
         main_menu.draw_backgrund(self.SCREEN_WIDTH, self.SCREEN_HEIGHT, self.SCREEN_BOTTOM)
         main_menu.add_main_menu(self.SCREEN_WIDTH, self.SCREEN_HEIGHT, self.SCREEN_BOTTOM, self.NAME_OF_THE_GAME)
-
+        self.enten_list.draw()
         self.player_list.draw()
 
 
@@ -75,7 +80,8 @@ class Game(arcade.Window):
         Normally, you'll call update() on the sprite lists that
         need it.
         """
-        pass
+        self.enten_sprite.center_x = self.enten_sprite.center_x + 2
+        self.enten_sprite.center_y = self.enten_sprite.center_y + 2
 
     def on_key_press(self, key, key_modifiers):
         """
@@ -103,7 +109,13 @@ class Game(arcade.Window):
         """
         Called when the user presses a mouse button.
         """
-        arcade.play_sound(self.mossberg_happy)
+        if button == arcade.MOUSE_BUTTON_LEFT:
+            arcade.play_sound(self.mossberg_happy)
+            position_letzter_linksklick = [x, y]
+            print("Letzter Linksklick: ", position_letzter_linksklick)
+        elif button == arcade.MOUSE_BUTTON_RIGHT:
+            print("Nachladen")
+            arcade.play_sound(self.nachladen)
 
     def on_mouse_release(self, x, y, button, key_modifiers):
         """
