@@ -27,7 +27,7 @@ def add_main_menu(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BOTTOM, NAME_OF_THE_GAME):
     arcade.draw_text(
             NAME_OF_THE_GAME,
             SCREEN_WIDTH / 2,
-            SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 3,
+            SCREEN_HEIGHT / 2 + SCREEN_HEIGHT / 3 + 30,
             (0, 0, 0,),
             anchor_x="center",
             font_size=60,
@@ -38,3 +38,4 @@ def add_main_menu(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BOTTOM, NAME_OF_THE_GAME):
             #anchor_y: str = "baseline",
             #rotation: float = 0
             )
+    #Figurines.bg_candy.tree()
