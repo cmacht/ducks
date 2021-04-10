@@ -10,22 +10,34 @@ SCREEN_HEIGHT = 600
 SCREEN_TITLE = "Welcome to Arcade"
 RADIUS = 150
 
-# Open the window
-arcade.open_window(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
 
-# Set the background color
-arcade.set_background_color(arcade.color.WHITE)
+# Classes
+class Welcome(arcade.Window):
+    """Main welcome window
+    """
+    def __init__(self):
+        """Initialize the window
+        """
 
-# Clear the screen and start drawing
-arcade.start_render()
+        # Call the parent class constructor
+        super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
 
-# Draw a blue circle
-arcade.draw_circle_filled(
-    SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, RADIUS, arcade.color.RED
-)
+        # Set the background window
+        arcade.set_background_color(arcade.color.WHITE)
 
-# Finish drawing
-arcade.finish_render()
+    def on_draw(self):
+        """Called whenever you need to draw your window
+        """
 
-# Display everything
-arcade.run()
+        # Clear the screen and start drawing
+        arcade.start_render()
+
+        # Draw a blue circle
+        arcade.draw_circle_filled(
+            SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, RADIUS, arcade.color.BLUE
+        )
+
+# Main code entry point
+if __name__ == "__main__":
+    app = Welcome()
+    arcade.run()
