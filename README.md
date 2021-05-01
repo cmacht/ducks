@@ -21,3 +21,10 @@ Provides methods during game loop, can be overriden as needed. Examples:
 * Mouse Input: `.on_mouse_press()`, `.on_mouse_release()`, `.on_mouse_motion()`
 * Updating Game Object: `.on_update()`
 * Drawing: `.on_draw()`
+
+**Sprites** \
+2D images on sprite list:
+* update all the sprites in the list with `SpriteList.update()`
+* draw all the sprites in the list with`SpriteList.draw()`
+  * `self.all_sprites.draw()`
+* check if a single sprite has collided with any sprite in the list
