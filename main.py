@@ -45,7 +45,7 @@ class Multiplayer(arcade.Window):
         self.player.left = 220
         self.all_sprites.append(self.player)
 
-        self.player2 = arcade.Sprite(":resources:images/animated_characters/robot/robot_idle.png", 0.5)
+        self.player2 = arcade.Sprite(":resources:images/animated_characters/robot/robot_idle.png", 0.7)
         self.player2.center_y = self.height / 2
         self.player2.right = 50
         self.all_sprites.append(self.player2)
@@ -88,9 +88,9 @@ class Multiplayer(arcade.Window):
             self.player.change_x = 0
 
         if symbol == arcade.key.UP or symbol == arcade.key.DOWN:
-            self.player.change_y = 0
+            self.player2.change_y = 0
         if symbol == arcade.key.LEFT or symbol == arcade.key.RIGHT:
-            self.player.change_x = 0
+            self.player2.change_x = 0
 
     def on_update(self, delta_time):
         if self.paused:
@@ -110,6 +110,18 @@ class Multiplayer(arcade.Window):
 
         if self.player.left < 0:
             self.player.left = 0
+
+        if self.player2.top > self.height:
+            self.player2.top = self.height
+
+        if self.player2.right > self.width:
+            self.player2.right = self.width
+
+        if self.player2.bottom < 0:
+            self.player2.bottom = 0
+
+        if self.player2.left < 0:
+            self.player2.left = 0
 
     def on_draw(self):
         """Called whenever you need to draw your window
